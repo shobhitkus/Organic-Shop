@@ -1,0 +1,23 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Date</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">City</th>
+    </tr>
+  </thead>
+
+  <ng-container *ngFor="let order of orders | async" >
+    <tbody *ngIf="order.datePlaced == orderDate">
+    <tr *ngFor="let item of order.item">
+      <th scope="row">{{ item.product.title }}</th>
+      <td>{{ order.datePlaced | date }}</td>
+      <td>{{ item.product.price }} </td>
+      <td>{{ item.quantity }}</td>
+      <td>{{ order.shipping.city }}</td>
+    </tr>
+      </tbody>
+  </ng-container>
+</table>
